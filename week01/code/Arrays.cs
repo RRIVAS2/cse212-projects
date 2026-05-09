@@ -13,7 +13,23 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+
+        // Implementation:
+        // 1.Create an empty array of size equal to length, of type double, this array will store the multiples
+        // 2.Create a for loop that iterates over the size of length, starting at index 0, at each iteration
+        // 2.Inside the for loop, multiply number by the current iteration value + 1, so that in the first iteration we don't multiply by 0.
+        // 3.Add the value to the array
+        // 4.return the array
+
+        double[] multiples = new double[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            var multiple = number * (i + 1);
+            multiples[i] = multiple;
+        }
+
+        return multiples; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +45,17 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+
+        //Implementation:
+        //1.Extract the values to the right, using the GetRange method, and store them in a temporal list. Count the number of values in the array and substract the amount of values to rearrange to get the starting position
+        //2.Remove the vlaues to the right, using the RemoveRange method
+        //3.Insert the temporal list at index 0, using the InsertRange method.
+
+        var temporal = data.GetRange(data.Count - amount, amount);
+        data.RemoveRange(data.Count - amount, amount);
+        data.InsertRange(0, temporal);
+
+
     }
 }
