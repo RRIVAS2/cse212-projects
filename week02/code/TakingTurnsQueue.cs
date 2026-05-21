@@ -45,6 +45,11 @@ public class TakingTurnsQueue
                 person.Turns -= 1;
                 _people.Enqueue(person);
             }
+            //Adding logic to address people with 0 or less turns
+            else if (person.Turns <= 0)
+            {
+                _people.Enqueue(person);
+            }
 
             return person;
         }
