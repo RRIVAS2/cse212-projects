@@ -9,7 +9,7 @@ public class PriorityQueueTests
     // Scenario: Create a queue with the following people and priority: Bob (2), Tim (1), Sue (4), Randy (5), Gina (3) and
     // run 2 times
     // Expected Result: "Sue"
-    // Defect(s) Found: 
+    // Defect(s) Found: Assert.AreEqual failed. Expected:<Sue>. Actual:<Randy>. 
     public void TestPriorityQueue_1()
     {
         var priorityQueue = new PriorityQueue();
@@ -38,7 +38,7 @@ public class PriorityQueueTests
     // Scenario: Create a queue with the following people and priority: Bob (2), Tim (1), Sue (4), Randy (5), Gina (4) and
     // run 2 times
     // Expected Result: "Sue"
-    // Defect(s) Found: 
+    // Defect(s) Found:  Assert.AreEqual failed. Expected:<Sue>. Actual:<Randy>. 
     public void TestPriorityQueue_2()
     {
         var priorityQueue = new PriorityQueue();
@@ -70,8 +70,8 @@ public class PriorityQueueTests
 
     [TestMethod]
     // Scenario: Don't add people to the queue. Test error message
-    // Expected Result: 
-    // Defect(s) Found: 
+    // Expected Result: Program throws the following message "The queue is empty"
+    // Defect(s) Found: No defects found
     public void TestPriorityQueue_3()
     {
         var priorityQueue = new PriorityQueue();

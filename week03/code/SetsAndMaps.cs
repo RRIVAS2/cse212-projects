@@ -22,7 +22,36 @@ public static class SetsAndMaps
     public static string[] FindPairs(string[] words)
     {
         // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+
+        var result = new List<string>();
+        var wordsPairs = new HashSet<string>();
+
+
+        foreach (var word in words)
+        {
+
+            if (wordsPairs.Contains(word))
+            {
+                continue;
+            }
+
+
+            var reversedWord = $"{word[1]}{word[0]}";
+
+            if (wordsPairs.Contains(reversedWord))
+            {
+                result.Add($"{reversedWord} & {word}");
+            }
+            else
+            {
+                wordsPairs.Add(word);
+            }
+
+
+
+
+        }
+        return result.ToArray();
     }
 
     /// <summary>
@@ -43,6 +72,17 @@ public static class SetsAndMaps
         {
             var fields = line.Split(",");
             // TODO Problem 2 - ADD YOUR CODE HERE
+            var degree = fields[3];
+
+            if (!degrees.ContainsKey(degree))
+            {
+                degrees.Add(degree, 1);
+            }
+            else
+            {
+                degrees[degree]++;
+            }
+
         }
 
         return degrees;
@@ -67,7 +107,67 @@ public static class SetsAndMaps
     public static bool IsAnagram(string word1, string word2)
     {
         // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        var firstWordDictionary = new Dictionary<char, int>();
+        var secondWordDictionary = new Dictionary<char, int>();
+
+        word1 = word1.ToLower();
+        word2 = word2.ToLower();
+
+        foreach (var letter in word1)
+        {
+            if (letter == ' ')
+            {
+                continue;
+            }
+
+            if (!firstWordDictionary.ContainsKey(letter))
+            {
+                firstWordDictionary.Add(letter, 1);
+            }
+            else
+            {
+                firstWordDictionary[letter]++;
+            }
+        }
+
+        foreach (var letter in word2)
+        {
+            if (letter == ' ')
+            {
+                continue;
+            }
+
+            if (!secondWordDictionary.ContainsKey(letter))
+            {
+                secondWordDictionary.Add(letter, 1);
+            }
+            else
+            {
+                secondWordDictionary[letter]++;
+
+            }
+        }
+
+        if (firstWordDictionary.Count != secondWordDictionary.Count)
+        {
+            return false;
+        }
+
+
+        foreach (var pair in firstWordDictionary)
+        {
+            char letter = pair.Key;
+            int countFirst = pair.Value;
+
+            if (!secondWordDictionary.ContainsKey(letter) || secondWordDictionary[letter] != countFirst)
+            {
+                return false;
+            }
+
+
+        }
+
+        return true;
     }
 
     /// <summary>
